@@ -1,0 +1,25 @@
+{
+  "name": "consistent-hashing-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hirokihello/consistent-hashing-typescript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hirokihello/consistent-hashing-typescript/issues"
+  },
+  "homepage": "https://github.com/hirokihello/consistent-hashing-typescript#readme",
+  "devDependencies": {
+    "@types/node": "^18.7.4",
+    "typescript": "^4.7.4"
+  },
+  "type": "module"
+}
