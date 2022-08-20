@@ -44,9 +44,9 @@ const readRecords = async (fileName: string): Promise<Record[]> => {
   return res;
 }
 
-const searchHash = (nodes: Node[], key: string): string => {
+const searchHash = (nodes: Node[], key: string): Node | string => {
   const hashKeyValue = crypto.createHash('md5').update(String(key)).digest("hex");
-
+  console.log({hashKeyValue});
   let start =0;
   let end = nodes.length;
 
@@ -60,7 +60,7 @@ const searchHash = (nodes: Node[], key: string): string => {
     else start = mid + 1;
   }
 
-  return nodes[start].hash;
+  return nodes[start];
 }
 
 const createKetamaObj = async (fileName: string, multipleNum: number = 1) => {
@@ -78,13 +78,14 @@ const createKetamaObj = async (fileName: string, multipleNum: number = 1) => {
   }
 
   nodes.sort(compareF);
+  console.log(nodes);
 
   return nodes;
 }
 
 const test = async () => {
-  const ketama = await createKetamaObj("./test/serverFile.txt", 3);
-  console.log(searchHash(ketama, "1"))
+  const ketama = await createKetamaObj("./test/serverFile.txt", 2);
+  console.log(searchHash(ketama, "aaa"))
 }
 
 test();
