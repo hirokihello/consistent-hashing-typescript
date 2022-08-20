@@ -12,19 +12,13 @@ https://github.com/RJ/ketama より引用
 
 記述されている内容としては、ketama は memcached の client の選択をするためのライブラリである。
 
-その処理方法について確認してみ流。
->
-* Take your list of servers (eg: 1.2.3.4:11211, 5.6.7.8:11211, 9.8.7.6:11211)
-* Hash each server string to several (100-200) unsigned ints
-* Conceptually, these numbers are placed on a circle called the continuum.
-  (imagine a clock face that goes from 0 to 2^32)
-* Each number links to the server it was hashed from, so servers appear
-  at several points on the continuum, by each of the numbers they hashed to.
-* To map a key->server, hash your key to a single unsigned int, and find the
-  next biggest number on the continuum. The server linked to that number is
-  the correct server for that key.
-* If you hash your key to a value near 2^32 and there are no points on the
-  continuum greater than your hash, return the first server in the continuum.
+その処理方法について確認してみる。
+> * Take your list of servers (eg: 1.2.3.4:11211, 5.6.7.8:11211, 9.8.7.6:11211)
+> * Hash each server string to several (100-200) unsigned ints
+> * Conceptually, these numbers are placed on a circle called the continuum. (imagine a clock face that goes from 0 to 2^32)
+> * Each number links to the server it was hashed from, so servers appear at several points on the continuum, by each of the numbers they hashed to.
+> * To map a key->server, hash your key to a single unsigned int, and find the next biggest number on the continuum. The server linked to that number is the correct server for that key.
+> * If you hash your key to a value near 2^32 and there are no points on the continuum greater than your hash, return the first server in the continuum.
 
 記述内容を日本語にすると下記となる。
 - 接続先のサーバーのリストを受け取る。(eg: 1.2.3.4:11211, 5.6.7.8:11211, 9.8.7.6:11211)
